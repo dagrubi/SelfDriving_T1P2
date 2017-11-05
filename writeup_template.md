@@ -17,9 +17,12 @@ The goals / steps of this project are the following:
 [image2]: ./pics/histogramm.png "Histogramm of training set"
 [image3]: ./pics/grayscale.png "grayscaling"
 [image4]: ./pics/normalizsation.png "normalisatzion"
-[image6]: ./examples/placeholder.png "Traffic Sign 3"
-[image7]: ./examples/placeholder.png "Traffic Sign 4"
-[image8]: ./examples/placeholder.png "Traffic Sign 5"
+[image5]: ./pics/nr_epochs.png "nr_epochs"
+[image6]: ./examples/placeholder.png "Traffic Sign 1"
+[image7]: ./examples/placeholder.png "Traffic Sign 2"
+[image8]: ./examples/placeholder.png "Traffic Sign 3"
+[image9]: ./examples/placeholder.png "Traffic Sign 4"
+[image10]: ./examples/placeholder.png "Traffic Sign 5"
 
 ## Rubric Points
 ###Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/481/view) individually and describe how I addressed each point in my implementation.  
@@ -48,11 +51,13 @@ signs data set:
 
 Here is an exploratory visualization of the data set. 
 As exmaple four traffic signs are shown. The label can be found in signnames.csv
+.
 ![Example 1][image1]
 
 The brighntess and contrast of the picture is different. On most pictures the traffic sign is in the center of the picture. Due to the various brightness and contrast the training data set is usable for deep learning approaches.
 
 It is a bar chart shows the distirbution of the training data. The xlabel represents the number of classes as defined in signnames.csv.
+.
 ![Histogramm][image2]
 
 ###Design and Test a Model Architecture
@@ -61,11 +66,13 @@ It is a bar chart shows the distirbution of the training data. The xlabel repres
 
 As a first step, I decided to convert the images to grayscale because for the detection of traffic signs color might not be necessary. Less information has to be processed -> training time will be shorter
 As example for the visualisatzion i choosed training data nr. 1567, a sign for traffic lights:
+.
 ![Example for grayscaling][image3]
 
 As last step i normalized the image data to values between -1 and 1, since normalized data can be trained faster and the danger of getting stuck in local minimas is less.
 
 Alternatively i normalized the colored images. I want to test which variant is better:
+.
 ![Example for normalized colored image][image4]
 
 I did not use any further preprocessing techniques.
@@ -99,26 +106,41 @@ My final model (LeNet_RGG() in the code!!) consisted of the following layers:
 
 ####3. Describe how you trained your model. The discussion can include the type of optimizer, the batch size, number of epochs and any hyperparameters such as learning rate.
 
-To train the model, I used an ....
+I trained the model on a gpu on AWS (g2.2xlarge).
+As optimizer the Adam-Optimizer is used
+
+Batch Size: 128
+Nr. of Epochs: 40
+learning rate: 0.001
+Sigma: 0.1
+
+The following graphs shows the increase of the validation accuracy depending on the number of epochs:
+.
+![Validation accuracy vs. number of epochs][image5]
+After 30 epochs only a small increase of validation accuracy is noticeable.
 
 ####4. Describe the approach taken for finding a solution and getting the validation set accuracy to be at least 0.93. Include in the discussion the results on the training, validation and test sets and where in the code these were calculated. Your approach may have been an iterative process, in which case, outline the steps you took to get to the final solution and why you chose those steps. Perhaps your solution involved an already well known implementation or architecture. In this case, discuss why you think the architecture is suitable for the current problem.
 
 My final model results were:
-* training set accuracy of ?
-* validation set accuracy of ? 
-* test set accuracy of ?
+* test set accuracy of 93.7%
+* validation set accuracy of 94.9%  
+* train set accuracy of 99.5%
 
-If an iterative approach was chosen:
-* What was the first architecture that was tried and why was it chosen?
-* What were some problems with the initial architecture?
-* How was the architecture adjusted and why was it adjusted? Typical adjustments could include choosing a different model architecture, adding or taking away layers (pooling, dropout, convolution, etc), using an activation function or changing the activation function. One common justification for adjusting an architecture would be due to overfitting or underfitting. A high accuracy on the training set but low accuracy on the validation set indicates over fitting; a low accuracy on both sets indicates under fitting.
-* Which parameters were tuned? How were they adjusted and why?
-* What are some of the important design choices and why were they chosen? For example, why might a convolution layer work well with this problem? How might a dropout layer help with creating a successful model?
+Model development
+I choose as basis the LeNet-5 architecture, which was shown in the LeNetLab in the udacity classroom. I modified the network concerning the requested inputs (32x32x3) and the requested outputs (43 labels).
+I did several modifications:
+- Validation accuracy was low (less than 80%), so i added an additional convolutional layer
+- Dropout after the fully connected layers improved the validation accuracy also.
+- Dropout after the convoluational layers did not improve the validation accuracy.
+- I increased the height of the convolutional layers in order to increase validation accuracy
 
-If a well known architecture was chosen:
-* What architecture was chosen?
-* Why did you believe it would be relevant to the traffic sign application?
-* How does the final model's accuracy on the training, validation and test set provide evidence that the model is working well?
+I tested the changes on the architecture on the gray images and on the normalized rgb-images. I reached an validation accuracy arount 90% for the gray images, so i continued only with the normalized rgb-images.
+
+tuned parameters:
+ - epoch size (max. 40 epochs were enough, no improvements after 40 epochs)
+ - height of convolutional layers 1,2,3
+ - height of fully connected layers
+
  
 
 ###Test a Model on New Images
