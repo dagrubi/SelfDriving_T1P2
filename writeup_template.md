@@ -15,6 +15,8 @@ The goals / steps of this project are the following:
 
 [image1]: ./pics/example_1.png "Example 1"
 [image2]: ./pics/histogramm.png "Histogramm of training set"
+[image3]: ./pics/grayscale.png "grayscaling"
+[image4]: ./pics/normalizsation.png "normalisatzion"
 [image6]: ./examples/placeholder.png "Traffic Sign 3"
 [image7]: ./examples/placeholder.png "Traffic Sign 4"
 [image8]: ./examples/placeholder.png "Traffic Sign 5"
@@ -55,42 +57,43 @@ It is a bar chart shows the distirbution of the training data. The xlabel repres
 
 ###Design and Test a Model Architecture
 
-####1. Describe how you preprocessed the image data. What techniques were chosen and why did you choose these techniques? Consider including images showing the output of each preprocessing technique. Pre-processing refers to techniques such as converting to grayscale, normalization, etc. (OPTIONAL: As described in the "Stand Out Suggestions" part of the rubric, if you generated additional data for training, describe why you decided to generate additional data, how you generated the data, and provide example images of the additional data. Then describe the characteristics of the augmented training set like number of images in the set, number of images for each class, etc.)
+####1. Describe how you preprocessed the image data. What techniques were chosen and why did you choose these techniques? Consider including images showing the output of each preprocessing technique. Pre-processing refers to techniques such as converting to grayscale, normalization, etc. 
 
-As a first step, I decided to convert the images to grayscale because ...
+As a first step, I decided to convert the images to grayscale because for the detection of traffic signs color might not be necessary. Less information has to be processed -> training time will be shorter
+As example for the visualisatzion i choosed training data nr. 1567, a sign for traffic lights:
+![Example for grayscaling][image3]
 
-Here is an example of a traffic sign image before and after grayscaling.
+As last step i normalized the image data to values between -1 and 1, since normalized data can be trained faster and the danger of getting stuck in local minimas is less.
 
-![alt text][image2]
+Alternatively i normalized the colored images. I want to test which variant is better:
+![Example for normalized colored image][image4]
 
-As a last step, I normalized the image data because ...
-
-I decided to generate additional data because ... 
-
-To add more data to the the data set, I used the following techniques because ... 
-
-Here is an example of an original image and an augmented image:
-
-![alt text][image3]
-
-The difference between the original data set and the augmented data set is the following ... 
-
+I did not use any further preprocessing techniques.
 
 ####2. Describe what your final model architecture looks like including model type, layers, layer sizes, connectivity, etc.) Consider including a diagram and/or table describing the final model.
 
-My final model consisted of the following layers:
+My final model (LeNet_RGG() in the code!!) consisted of the following layers:
 
 | Layer         		|     Description	        					| 
 |:---------------------:|:---------------------------------------------:| 
 | Input         		| 32x32x3 RGB image   							| 
-| Convolution 3x3     	| 1x1 stride, same padding, outputs 32x32x64 	|
+| Convolution 5x5     	| 1x1 stride, valid padding, outputs 28x28x24 	|
 | RELU					|												|
-| Max pooling	      	| 2x2 stride,  outputs 16x16x64 				|
-| Convolution 3x3	    | etc.      									|
-| Fully connected		| etc.        									|
-| Softmax				| etc.        									|
-|						|												|
-|						|												|
+| Max pooling	      	| 2x2 stride,  outputs 14x14x24 				|
+| Convolution 5x5     	| 1x1 stride, valid padding, outputs 10x10x48 	|
+| RELU					|												|
+| Max pooling	      	| 2x2 stride,  outputs 5x5x48 				|
+| Convolution 3x3     	| 1x1 stride, valid padding, outputs 3x3x172 	|
+| RELU					|												|
+| Max pooling	      	| 1x1 stride,  outputs 2x2x172 				|
+| Flatten				| inputs	2x2x172 , output 688|
+| Fully Connected | connect every neuron	input: 688, output: 400|
+| RELU					|												|  
+| Dropout | dropout-rate 0.5 |
+| Fully Connected | connect every neuron	input: 400, output: 129|
+| RELU					|												|
+| Dropout | dropout-rate 0.5 |
+| Fully Connected | connect every neuron	input: 129, output: 43|
  
 
 
