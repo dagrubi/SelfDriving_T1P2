@@ -1,11 +1,5 @@
 #**Traffic Sign Recognition** 
 
-##Writeup Template
-
-###You can use this file as a template for your writeup if you want to submit it as a markdown file, but feel free to use some other method and submit a pdf if you prefer.
-
----
-
 **Build a Traffic Sign Recognition Project**
 
 The goals / steps of this project are the following:
@@ -19,11 +13,8 @@ The goals / steps of this project are the following:
 
 [//]: # (Image References)
 
-[image1]: ./examples/visualization.jpg "Visualization"
-[image2]: ./examples/grayscale.jpg "Grayscaling"
-[image3]: ./examples/random_noise.jpg "Random Noise"
-[image4]: ./examples/placeholder.png "Traffic Sign 1"
-[image5]: ./examples/placeholder.png "Traffic Sign 2"
+[image1]: ./pics/example_1.png "Example 1"
+[image2]: ./pics/histogramm.png "Histogramm of training set"
 [image6]: ./examples/placeholder.png "Traffic Sign 3"
 [image7]: ./examples/placeholder.png "Traffic Sign 4"
 [image8]: ./examples/placeholder.png "Traffic Sign 5"
@@ -40,7 +31,7 @@ You're reading it! and here is a link to my [project code](https://github.com/da
 
 ###Data Set Summary & Exploration
 
-####1. Provide a basic summary of the data set. In the code, the analysis should be done using python, numpy and/or pandas methods rather than hardcoding results manually.
+####1. Provide a basic summary of the data set. 
 
 I used the numpy library to calculate summary statistics of the traffic
 signs data set:
@@ -53,9 +44,14 @@ signs data set:
 
 ####2. Include an exploratory visualization of the dataset.
 
-Here is an exploratory visualization of the data set. It is a bar chart showing how the data ...
+Here is an exploratory visualization of the data set. 
+As exmaple four traffic signs are shown. The label can be found in signnames.csv
+![Example 1][image1]
 
-![alt text][image1]
+The brighntess and contrast of the picture is different. On most pictures the traffic sign is in the center of the picture. Due to the various brightness and contrast the training data set is usable for deep learning approaches.
+
+It is a bar chart shows the distirbution of the training data. The xlabel represents the number of classes as defined in signnames.csv.
+![Histogramm][image2]
 
 ###Design and Test a Model Architecture
 
