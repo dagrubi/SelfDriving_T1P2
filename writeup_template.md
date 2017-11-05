@@ -16,7 +16,7 @@ The goals / steps of this project are the following:
 [image1]: ./pics/example_1.png "Example 1"
 [image2]: ./pics/histogramm.png "Histogramm of training set"
 [image3]: ./pics/grayscale.png "grayscaling"
-[image4]: ./pics/normalizsation.png "normalisatzion"
+[image4]: ./pics/normalization.png "normalisatzion"
 [image5]: ./pics/nr_epochs.png "nr_epochs"
 [image6]: ./examples/placeholder.png "Traffic Sign 1"
 [image7]: ./examples/placeholder.png "Traffic Sign 2"
