@@ -18,11 +18,12 @@ The goals / steps of this project are the following:
 [image3]: ./pics/grayscale.png "grayscaling"
 [image4]: ./pics/normalization.png "normalisatzion"
 [image5]: ./pics/nr_epochs.png "nr_epochs"
-[image6]: ./examples/placeholder.png "Traffic Sign 1"
-[image7]: ./examples/placeholder.png "Traffic Sign 2"
-[image8]: ./examples/placeholder.png "Traffic Sign 3"
-[image9]: ./examples/placeholder.png "Traffic Sign 4"
-[image10]: ./examples/placeholder.png "Traffic Sign 5"
+[image6]: ./new_data/baustelle.jpg "Traffic Sign 1"
+[image7]: ./new_data/left.jpg "Traffic Sign 2"
+[image8]: ./new_data/speed_limit.jpg "Traffic Sign 3"
+[image9]: ./new_data/stop.jpg "Traffic Sign 4"
+[image10]: ./new_data/vorfahrt_achten.jpg "Traffic Sign 5"
+[image11]: ./new_data/vorfahrt_gew.jpg "Traffic Sign 6"
 
 ## Rubric Points
 ###Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/481/view) individually and describe how I addressed each point in my implementation.  
@@ -150,10 +151,14 @@ tuned parameters:
 
 Here are five German traffic signs that I found on the web:
 
-![alt text][image4] ![alt text][image5] ![alt text][image6] 
-![alt text][image7] ![alt text][image8]
+![construction][image6] 
+![left curve][image7] 
+![speed limit][image8] 
+![stop][image9] 
+![yield][image10] 
+![priority road][image11]
 
-The first image might be difficult to classify because ...
+All images might easy to classify, since the traffic sign are central and the brightness and colorness is good
 
 ####2. Discuss the model's predictions on these new traffic signs and compare the results to predicting on the test set. At a minimum, discuss what the predictions were, the accuracy on these new predictions, and compare the accuracy to the accuracy on the test set (OPTIONAL: Discuss the results in more detail as described in the "Stand Out Suggestions" part of the rubric).
 
@@ -161,14 +166,15 @@ Here are the results of the prediction:
 
 | Image			        |     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
-| Stop Sign      		| Stop sign   									| 
-| U-turn     			| U-turn 										|
+| Road work     		| Road work   									| 
+| Dangerous curve to the left     			| Dangerous curve to the left  										|
+| 120 km/h	      		| 120 km/h	  				 				|
+| stop			| stop      							|
 | Yield					| Yield											|
-| 100 km/h	      		| Bumpy Road					 				|
-| Slippery Road			| Slippery Road      							|
+| Priority road					| Priority road										|
 
 
-The model was able to correctly guess 4 of the 5 traffic signs, which gives an accuracy of 80%. This compares favorably to the accuracy on the test set of ...
+The model was able to correctly guess 6 of the 6 traffic signs, which gives an accuracy of 100%. This compares favorably to the accuracy on the test set of the database
 
 ####3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction. Provide the top 5 softmax probabilities for each image along with the sign type of each probability. (OPTIONAL: as described in the "Stand Out Suggestions" part of the rubric, visualizations can also be provided such as bar charts)
 
