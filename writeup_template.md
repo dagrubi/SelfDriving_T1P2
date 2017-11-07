@@ -124,9 +124,9 @@ After 30 epochs only a small increase of validation accuracy is noticeable.
 ####4. Describe the approach taken for finding a solution and getting the validation set accuracy to be at least 0.93. Include in the discussion the results on the training, validation and test sets and where in the code these were calculated. Your approach may have been an iterative process, in which case, outline the steps you took to get to the final solution and why you chose those steps. Perhaps your solution involved an already well known implementation or architecture. In this case, discuss why you think the architecture is suitable for the current problem.
 
 My final model results were:
-* test set accuracy of 93.7%
-* validation set accuracy of 94.9%  
-* train set accuracy of 99.5%
+* test set accuracy of 94.1%
+* validation set accuracy of 96.5%  
+* train set accuracy of 99.7%
 
 Model development
 I choose as basis the LeNet-5 architecture, which was shown in the LeNetLab in the udacity classroom. I modified the network concerning the requested inputs (32x32x3) and the requested outputs (43 labels).
@@ -156,7 +156,7 @@ Here are five German traffic signs that I found on the web:
 ![speed limit][image8] 
 ![stop][image9] 
 ![yield][image10] 
-![priority road][image11]
+![traffic_light][image11]
 
 All images might easy to classify, since the traffic sign are central and the brightness and colorness is good
 
@@ -171,16 +171,18 @@ Here are the results of the prediction:
 | 120 km/h	      		| 120 km/h	  				 				|
 | stop			| stop      							|
 | Yield					| Yield											|
-| Priority road					| Priority road										|
+| Traffic light					| 										|
 
 
 The model was able to correctly guess 6 of the 6 traffic signs, which gives an accuracy of 100%. This compares favorably to the accuracy on the test set of the database
 
 ####3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction. Provide the top 5 softmax probabilities for each image along with the sign type of each probability. (OPTIONAL: as described in the "Stand Out Suggestions" part of the rubric, visualizations can also be provided such as bar charts)
 
-The code for making predictions on my final model is located in the 11th cell of the Ipython notebook.
+The code for making predictions on my final model is located in the 16th cell of the Ipython notebook.
 
-For the first image, the model is relatively sure that this is a stop sign (probability of 0.6), and the image does contain a stop sign. The top five soft max probabilities were
+For the first image is road work
+![construction][image6] 
+The top five soft max probabilities were
 
 | Probability         	|     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
