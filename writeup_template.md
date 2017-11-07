@@ -52,13 +52,13 @@ signs data set:
 
 Here is an exploratory visualization of the data set. 
 As exmaple four traffic signs are shown. The label can be found in signnames.csv
-.
+<br />
 ![Example 1][image1]
 
 The brighntess and contrast of the picture is different. On most pictures the traffic sign is in the center of the picture. Due to the various brightness and contrast the training data set is usable for deep learning approaches.
 
 It is a bar chart shows the distirbution of the training data. The xlabel represents the number of classes as defined in signnames.csv.
-.
+<br />
 ![Histogramm][image2]
 
 ###Design and Test a Model Architecture
@@ -67,13 +67,13 @@ It is a bar chart shows the distirbution of the training data. The xlabel repres
 
 As a first step, I decided to convert the images to grayscale because for the detection of traffic signs color might not be necessary. Less information has to be processed -> training time will be shorter
 As example for the visualisatzion i choosed training data nr. 1567, a sign for traffic lights:
-.
+<br />
 ![Example for grayscaling][image3]
 
 As last step i normalized the image data to values between -1 and 1, since normalized data can be trained faster and the danger of getting stuck in local minimas is less.
 
 Alternatively i normalized the colored images. I want to test which variant is better:
-.
+<br />
 ![Example for normalized colored image][image4]
 
 I did not use any further preprocessing techniques.
@@ -116,7 +116,7 @@ learning rate: 0.001
 Sigma: 0.1
 
 The following graphs shows the increase of the validation accuracy depending on the number of epochs:
-.
+<br />
 ![Validation accuracy vs. number of epochs][image5]
 
 After 30 epochs only a small increase of validation accuracy is noticeable.
@@ -150,13 +150,19 @@ tuned parameters:
 ####1. Choose five German traffic signs found on the web and provide them in the report. For each image, discuss what quality or qualities might be difficult to classify.
 
 Here are five German traffic signs that I found on the web:
-
+<br />
 ![construction][image6] 
+<br />
 ![left curve][image7] 
+<br />
 ![speed limit][image8] 
+<br />
 ![stop][image9] 
+<br />
 ![yield][image10] 
+<br />
 ![traffic_light][image11]
+<br />
 
 The traffic light might difficult to classifiy, since it is skewed and there is another sing visable
 All other images might easy to classify, since the traffic sign are central and the brightness and colorness is good.
@@ -182,7 +188,9 @@ The model was able to correctly guess 5 of the 6 traffic signs, which gives an a
 The code for making predictions on my final model is located in the 16th cell of the Ipython notebook.
 
 For the first image is road work
+<br />
 ![construction][image6] 
+<br />
 The top five soft max probabilities were
 
 | Probability         	|     Prediction	        					| 
@@ -195,7 +203,9 @@ The top five soft max probabilities were
 
 
 The second image is dangerious curve to left
+<br />
 ![dangerious left curve][image7] 
+<br />
 The top five soft max probabilities were
 
 | Probability         	|     Prediction	        					| 
@@ -207,7 +217,9 @@ The top five soft max probabilities were
 | 0.00				    | no passing for vehicles > 3.5t  						|
 
 The third image is 120 km/h
+<br />
 ![120 km/h][image7] 
+<br />
 The top five soft max probabilities were
 
 | Probability         	|     Prediction	        					| 
@@ -219,7 +231,9 @@ The top five soft max probabilities were
 | 0.00				    | 60 km/h |			
 
 The 4th image is stop
+<br />
 ![stop][image9] 
+<br />
 The top five soft max probabilities were
 
 | Probability         	|     Prediction	        					| 
@@ -231,7 +245,9 @@ The top five soft max probabilities were
 | 0.00				    | 60 km/h |						
 
 The 5th image is yield
+<br />
 ![yield][image10] 
+<br />
 The top five soft max probabilities were
 
 | Probability         	|     Prediction	        					| 
@@ -243,7 +259,9 @@ The top five soft max probabilities were
 | 0.00				    | 50 km/h  			|
 
 The 6th image is traffic signals
+<br />
 ![traffic signals][image11] 
+<br />
 A speed limit of 30 km/h was predicted (wrong)
 The top five soft max probabilities were
 
