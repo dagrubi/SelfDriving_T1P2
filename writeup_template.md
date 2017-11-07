@@ -23,7 +23,7 @@ The goals / steps of this project are the following:
 [image8]: ./new_data/speed_limit.jpg "Traffic Sign 3"
 [image9]: ./new_data/stop.jpg "Traffic Sign 4"
 [image10]: ./new_data/vorfahrt_achten.jpg "Traffic Sign 5"
-[image11]: ./new_data/vorfahrt_gew.jpg "Traffic Sign 6"
+[image11]: ./new_data/traffic_light.jpg "Traffic Sign 6"
 
 ## Rubric Points
 ###Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/481/view) individually and describe how I addressed each point in my implementation.  
@@ -158,7 +158,8 @@ Here are five German traffic signs that I found on the web:
 ![yield][image10] 
 ![traffic_light][image11]
 
-All images might easy to classify, since the traffic sign are central and the brightness and colorness is good
+The traffic light might difficult to classifiy, since it is skewed and there is another sing visable
+All other images might easy to classify, since the traffic sign are central and the brightness and colorness is good.
 
 ####2. Discuss the model's predictions on these new traffic signs and compare the results to predicting on the test set. At a minimum, discuss what the predictions were, the accuracy on these new predictions, and compare the accuracy to the accuracy on the test set (OPTIONAL: Discuss the results in more detail as described in the "Stand Out Suggestions" part of the rubric).
 
@@ -171,10 +172,10 @@ Here are the results of the prediction:
 | 120 km/h	      		| 120 km/h	  				 				|
 | stop			| stop      							|
 | Yield					| Yield											|
-| Traffic light					| 										|
+| Traffic light					| 			30 km/h							|
 
 
-The model was able to correctly guess 6 of the 6 traffic signs, which gives an accuracy of 100%. This compares favorably to the accuracy on the test set of the database
+The model was able to correctly guess 5 of the 6 traffic signs, which gives an accuracy of 83%. 
 
 ####3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction. Provide the top 5 softmax probabilities for each image along with the sign type of each probability. (OPTIONAL: as described in the "Stand Out Suggestions" part of the rubric, visualizations can also be provided such as bar charts)
 
@@ -186,14 +187,73 @@ The top five soft max probabilities were
 
 | Probability         	|     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
-| .60         			| Stop sign   									| 
-| .20     				| U-turn 										|
-| .05					| Yield											|
-| .04	      			| Bumpy Road					 				|
-| .01				    | Slippery Road      							|
+| 1.0         			| Road Work   									| 
+| 0.00     				| beware of ice 										|
+| 0.00					| 70 km/h										|
+| 0.00	      			| 20 km/h					 				|
+| 0.00				    | 30 km/h     							|
 
 
-For the second image ... 
+The second image is dangerious curve to left
+![dangerious left curve][image7] 
+The top five soft max probabilities were
+
+| Probability         	|     Prediction	        					| 
+|:---------------------:|:---------------------------------------------:| 
+| 1.0         			| dangerious curve to left   									| 
+| 0.00     				| Go straight or left										|
+| 0.00					| Double curve								|
+| 0.00	      			| slippery road			 				|
+| 0.00				    | no passing for vehicles > 3.5t  						|
+
+The third image is 120 km/h
+![120 km/h][image7] 
+The top five soft max probabilities were
+
+| Probability         	|     Prediction	        					| 
+|:---------------------:|:---------------------------------------------:| 
+| 1.0         			| 120 km/h   									| 
+| 0.00     				| 20 km/h 										|
+| 0.00					| 30 km/h 								|
+| 0.00	      			| 50 km/h 	 				|
+| 0.00				    | 60 km/h |			
+
+The 4th image is stop
+![stop][image9] 
+The top five soft max probabilities were
+
+| Probability         	|     Prediction	        					| 
+|:---------------------:|:---------------------------------------------:| 
+| 1.0         			| stop 									| 
+| 0.00     				| 20 km/h 										|
+| 0.00					| 30 km/h 								|
+| 0.00	      			| 50 km/h 	 				|
+| 0.00				    | 60 km/h |						
+
+The 5th image is yield
+![yield][image10] 
+The top five soft max probabilities were
+
+| Probability         	|     Prediction	        					| 
+|:---------------------:|:---------------------------------------------:| 
+| 1.0         			| yield  									| 
+| 0.00     				| end of no passing by vehicles > 3.5t									|
+| 0.00					| 20 km/h 						|
+| 0.00	      			| 30 km/h 	 				|
+| 0.00				    | 50 km/h  			|
+
+The 6th image is traffic signals
+![traffic signals][image11] 
+A speed limit of 30 km/h was predicted (wrong)
+The top five soft max probabilities were
+
+| Probability         	|     Prediction	        					| 
+|:---------------------:|:---------------------------------------------:| 
+| 0.99         			| 30 km/h  									| 
+| 0.00     				| General caution								|
+| 0.00					| priority road					|
+| 0.00	      			| end of no passing	 				|
+| 0.00				    | 60 km/h			
 
 ### (Optional) Visualizing the Neural Network (See Step 4 of the Ipython notebook for more details)
 ####1. Discuss the visual output of your trained network's feature maps. What characteristics did the neural network use to make classifications?
